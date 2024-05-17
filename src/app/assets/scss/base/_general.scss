@@ -1,0 +1,28 @@
+* {
+    box-sizing: border-box;
+}
+
+html {
+    font-size: 10px;
+}
+
+body {
+    font-size: $font-lg;
+}
+
+.container {
+    width: 1400px;
+    max-width: 90%;
+    margin: 0 auto;
+}
+
+a {
+    text-decoration: none;
+    color: $black;
+}
+
+.overlay {
+    position: absolute;
+    inset: 0;
+    display: flex;
+}
