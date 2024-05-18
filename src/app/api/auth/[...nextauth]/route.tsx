@@ -24,6 +24,7 @@ const handler = NextAuth({
           }
         }),
       ],
+    secret: process.env.JWT_SECRET
 })
 
 export { handler as GET, handler as POST }
