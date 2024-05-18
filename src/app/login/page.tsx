@@ -4,13 +4,14 @@ import React from 'react';
 import { signIn, useSession } from 'next-auth/react';
 import Container from '../components/Container';
 import { redirect } from 'next/navigation';
+import Loading from '../components/Loading';
 
 const Login = () => {
 
     const { data: session, status } = useSession()
 
     if (status === 'loading') {
-        return <h1>Loading</h1>
+        return <Loading />
     }
 
     if (status === 'authenticated') {
