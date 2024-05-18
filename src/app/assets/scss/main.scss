@@ -5,6 +5,13 @@
 @import './base/normalize';
 @import './base/general';
 
+// COMPONENTS
+@import './components/buttons';
+
 // LAYOUTS
 @import './layouts/nav';
 @import './layouts/header';
+@import './layouts/footer';
+
+// PAGES
+@import './pages/login';
