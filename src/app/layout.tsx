@@ -14,14 +14,13 @@ export const metadata: Metadata = {
   description: "Les Foli'chons website",
 };
 
-type Props = {
+export default function RootLayout({
+  children,
+  session
+}: {
   children: React.ReactNode,
   session: Session | null
-}
-
-export default function RootLayout({
-  children, session
-}: Props) {
+}) {
 
   return (
     <html lang="fr">
