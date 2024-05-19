@@ -1,12 +1,12 @@
 import { sql } from '@vercel/postgres';
 import { NextResponse } from 'next/server';
 
-export async function GET(request: Request) {
+export default async function GET(request: Request) {
   const { searchParams } = new URL(request.url);
   const id = searchParams.get('id');
 
   try {
-    await sql`DELETE FROM pets WHERE 'id' = (${id})`
+    await sql`DELETE FROM pets WHERE id=${id}`
   } catch (error) {
     return NextResponse.json({error}, {status: 500})
   }
