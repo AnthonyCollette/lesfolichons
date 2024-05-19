@@ -31,9 +31,15 @@ const Page = ({ params }: { params: { chonsId: number } }) => {
                 {loading && <Loading />}
                 {!loading && data.length < 1 && <p>Oops, il y a eu une erreur...</p>}
                 {!loading && data.length > 0 && <>
-                <H1 text={data[0]?.name} customClass='text-center' />
-                <Image alt={`Photo de ${data[0].name}`} src={data[0].image} sizes='100vw' style={{width: '100%', height: 'auto'}} />
-                <p>{data[0].description}</p>
+                    <H1 text={data[0]?.name} customClass='text-center' />
+                    <div className='section-w-img'>
+                        <div className='left-column'>
+                            <p>{data[0].description}</p>
+                        </div>
+                        <div className='right-column'>
+                            <Image alt={`Photo de ${data[0].name}`} src={data[0].image} sizes='100vw' style={{ width: '100%', height: 'auto' }} />
+                        </div>
+                    </div>
                 </>}
             </Container>
         </main>
