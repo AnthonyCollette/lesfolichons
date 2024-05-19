@@ -10,9 +10,7 @@ const Chons = ({ params }: any) => {
     const [chons, setChons] = useState(Array || null)
 
     useEffect(() => {
-        fetch('/api/get-pets').then((response) => response.json()).then(data => {
-            console.log(data)
-            setChons(data)}).catch((error) => console.log(error))
+        fetch('/api/get-pets').then((response) => response.json()).then(data => setChons(data)).catch((error) => console.log(error))
     }, [])
 
     return (
