@@ -10,7 +10,7 @@ const Chons = () => {
     const [chons, setChons] = useState(Array || null)
 
     useEffect(() => {
-        fetch('/api/get-pets', { next: {revalidate: 60}}).then((response) => response.json()).then(data => setChons(data)).catch((error) => console.log(error))
+        fetch('/api/get-pets').then((response) => response.json()).then(data => setChons(data)).catch((error) => console.log(error))
     }, [])
 
     return (
