@@ -73,7 +73,7 @@ const Nav = () => {
                                 return <li key={index}><Link href={link.link} target='_blank'>{link.text}</Link></li>
                             }
                             if (link.submenu) {
-                                return <div className='sub-menu'>
+                                return <div className='sub-menu' key={index}>
                                     <p>{link.text}</p> <FaChevronDown />
                                     <ul>
                                         {link.subitems.map((item, index) => {
