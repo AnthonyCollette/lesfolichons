@@ -26,7 +26,7 @@ const Page = ({ params }: { params: { chonsId: number } }) => {
     }, [data])
 
     return (
-        <main>
+        <main className='chon-details'>
             <Container>
                 {loading && <Loading />}
                 {!loading && data.length < 1 && <p>Oops, il y a eu une erreur...</p>}
@@ -37,7 +37,7 @@ const Page = ({ params }: { params: { chonsId: number } }) => {
                             <p>{data[0].description}</p>
                         </div>
                         <div className='right-column'>
-                            <Image alt={`Photo de ${data[0].name}`} src={data[0].image} width={400} height={400} sizes='100vw' style={{ width: '100%', height: 'auto' }} />
+                            <Image alt={`Photo de ${data[0].name}`} src={data[0].image} width={400} height={400} sizes='100vw' style={{ width: '70%', height: 'auto' }} />
                         </div>
                     </div>
                 </>}

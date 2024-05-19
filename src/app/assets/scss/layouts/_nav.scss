@@ -1,6 +1,7 @@
 nav {
 
     box-shadow: 0 5px 5px rgba($color: $color-004, $alpha: 0.5);
+
     .container {
         display: flex;
         justify-content: space-between;
@@ -11,7 +12,7 @@ nav {
         display: flex;
         align-items: center;
 
-        > .sub-menu {
+        >.sub-menu {
             margin-left: 30px;
         }
 
@@ -36,11 +37,11 @@ nav {
             &:hover {
 
                 p,
-                svg {
+                >svg {
                     color: $color-002;
                 }
 
-                svg {
+                >svg {
                     transform: rotate(-180deg);
                 }
 
@@ -70,7 +71,11 @@ nav {
                     color: $color-004;
 
                     &:hover {
-                        color: $color-002;
+
+                        a,
+                        svg {
+                            color: $color-002;
+                        }
                     }
                 }
             }
@@ -94,6 +99,12 @@ nav {
         a {
             color: $color-004;
             transition: all .2s ease-in-out;
+            display: inline;
+
+            svg {
+                margin-left: 5px;
+                padding-top: 5px;
+            }
         }
     }
 }
