@@ -25,6 +25,17 @@ const Nav = () => {
         }
     }
 
+    const adoptMenu = [{
+        link: '/adoption-responsable',
+        text: "L'adoption responsable"
+    }, {
+        link: '/chons',
+        text: "Nos chons à l'adoption"
+    }, {
+        link: '/adoption',
+        text: "Formulaire d'adoption"
+    }]
+
     const links = [{
         link: '/',
         text: 'Accueil'
@@ -33,7 +44,9 @@ const Nav = () => {
         text: 'Association'
     }, {
         link: '/adopter',
-        text: 'Adopter'
+        text: 'Adopter',
+        submenu: true,
+        subitems: adoptMenu
     }, {
         link: '/nous-aider',
         text: 'Nous aider'
@@ -45,7 +58,7 @@ const Nav = () => {
         text: 'Boutique',
         blank: true
     }]
-    
+
 
     return (
         <nav>
@@ -54,15 +67,25 @@ const Nav = () => {
                     <Image src={logo} alt="Logo" width={100} />
                 </Link>
                 <div className='nav__right'>
-                <ul>
-                    {links.map((link, index) => {
-                        if (link.blank) {
-                            return <li key={index}><Link href={link.link} target='_blank'>{link.text}</Link></li>
-                        }
-                        return <li key={index}><Link href={link.link}>{link.text}</Link></li>
-                    })}
-                </ul>
-                {dashboardButton()}
+                    <ul>
+                        {links.map((link, index) => {
+                            if (link.blank) {
+                                return <li key={index}><Link href={link.link} target='_blank'>{link.text}</Link></li>
+                            }
+                            if (link.submenu) {
+                                return <div className='sub-menu'>
+                                    <p>{link.text}</p> <FaChevronDown />
+                                    <ul>
+                                        {link.subitems.map((item, index) => {
+                                            return <li key={index}><Link href={item.link}>{item.text}</Link></li>
+                                        })}
+                                    </ul>
+                                </div>
+                            }
+                            return <li key={index}><Link href={link.link}>{link.text}</Link></li>
+                        })}
+                    </ul>
+                    {dashboardButton()}
                 </div>
             </Container>
         </nav>
