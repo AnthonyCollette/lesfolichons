@@ -1,9 +1,11 @@
 // UTILS
 @import './utils/variables';
+@import './utils/animations';
 
 // BASE
 @import './base/normalize';
 @import './base/general';
+@import './base/typography';
 
 // COMPONENTS
 @import './components/buttons';
@@ -12,6 +14,8 @@
 @import './layouts/nav';
 @import './layouts/header';
 @import './layouts/footer';
+@import './layouts/slider';
+@import './layouts/section-w-img';
 
 // PAGES
 @import './pages/login';

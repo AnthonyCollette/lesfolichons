@@ -1,16 +1,98 @@
 nav {
+
+    box-shadow: 0 5px 5px rgba($color: $color-004, $alpha: 0.5);
     .container {
         display: flex;
         justify-content: space-between;
         align-items: center;
     }
 
+    .nav__right {
+        display: flex;
+        align-items: center;
+
+        .sub-menu {
+            position: relative;
+            margin-left: 30px;
+            padding: 40px 0;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+
+            p,
+            svg {
+                color: $color-004;
+                transition: all .4s ease-in-out;
+            }
+
+            svg {
+                margin-left: 5px;
+            }
+
+            &:hover {
+
+                p,
+                svg {
+                    color: $color-002;
+                }
+
+                svg {
+                    transform: rotate(-180deg);
+                }
+
+                ul {
+                    opacity: 1;
+                    transform: translateY(0);
+                }
+            }
+
+            ul {
+                position: absolute;
+                left: 0;
+                top: 100%;
+                display: flex;
+                flex-direction: column;
+                justify-content: flex-start;
+                align-items: flex-start;
+                background-color: $white;
+                padding: 20px;
+                z-index: 1;
+                transform: translateY(-100%);
+                width: 200px;
+                opacity: 0;
+                transition: all .2s ease-in-out;
+                box-shadow: 0 5px 5px rgba($color: $color-004, $alpha: 0.5);
+
+                li {
+                    padding: 0;
+                    transition: .2s ease-in-out;
+                    color: $color-004;
+
+                    &:hover {
+                        color: $color-002;
+                    }
+                }
+            }
+        }
+    }
+
     ul {
         display: flex;
+        align-items: center;
         gap: 30px;
 
+        li {
+            padding: 40px 0;
+            cursor: pointer;
+
+            &:hover a {
+                color: $color-002;
+            }
+        }
+
         a {
-            color: $color-002;
+            color: $color-004;
+            transition: all .2s ease-in-out;
         }
     }
 }

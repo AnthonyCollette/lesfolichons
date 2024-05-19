@@ -8,6 +8,16 @@ html {
 
 body {
     font-size: $font-lg;
+    color: $color-004;
+}
+
+main {
+    padding: 50px 0 100px;
+    background-color: rgba($color: $color-001, $alpha: 0.2);
+
+    &:has(header) {
+        padding: 0;
+    }
 }
 
 .container {

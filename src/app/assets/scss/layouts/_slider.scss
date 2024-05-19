@@ -1,0 +1,31 @@
+.react-multi-carousel-list {
+    height: 800px;
+    .react-multi-carousel-track {
+        height: 100%;
+
+        .react-multi-carousel-item > div {
+            height: 100%;
+        }
+
+        .container {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            justify-content: center;
+            height: 100%;
+        }
+
+        h3 {
+            font-size: $font-xxxl;
+            color: $white;
+            margin-bottom: 20px;
+        }
+
+        .btn {
+            font-size: $font-xl;
+        }
+    }
+    img {
+        z-index: -1;
+    }
+}

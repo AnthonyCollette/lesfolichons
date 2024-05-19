@@ -1,0 +1,18 @@
+@keyframes appearsFromTop {
+    0% {
+        height: 0;
+        opacity: 0;
+        width: 0;
+        transform: translateY(-100%);
+        visibility: hidden;
+    }
+    1% {
+        height: 100%;
+        width: 200px;
+        visibility: visible;
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}

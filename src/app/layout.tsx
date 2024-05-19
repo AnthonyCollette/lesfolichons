@@ -6,7 +6,7 @@ import Footer from "./components/Footer";
 import { Session } from "next-auth";
 import { SessionProvider } from './components/NextAuthProvider'
 
-const delius = Delius_Swash_Caps({ subsets: ["latin"], weight: ['400'] });
+
 const poppins = Poppins({ subsets: ["latin"], weight: ['300', '400', '500', '600', '700', '800', '900'] });
 
 export const metadata: Metadata = {
