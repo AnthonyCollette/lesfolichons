@@ -9,6 +9,7 @@ import { v4 as uuidv4 } from 'uuid';
 import { useRouter } from 'next/navigation';
 import { PutBlobResult, put } from '@vercel/blob';
 import H1 from '../components/H1';
+import { unstable_noStore as noStore } from 'next/cache';
 
 const Dashboard = () => {
 
@@ -29,6 +30,7 @@ const Dashboard = () => {
 
     const createPet = async (e: FormEvent) => {
         e.preventDefault()
+        noStore()
         if (!inputFileRef?.current?.files) {
             throw new Error("Il n'y a pas d'image téléversée")
         }
@@ -39,7 +41,7 @@ const Dashboard = () => {
         })
         const newBlob = (await response.json()) as PutBlobResult
 
-        await fetch(`/api/add-pet?name=${petName}&id=${petId}&description=${petDesc}&image=${newBlob.url}`).then(() => {
+        await fetch(`/api/add-pet?name=${petName}&id=${petId}&description=${petDesc}&image=${newBlob.url}`, {next: {revalidate: 0}}).then(() => {
             setPetName('')
             setPetId(uuidv4())
             setPetDesc('')
