@@ -1,27 +1,19 @@
-import React from 'react';
+'use client'
+
+import React, { useEffect, useState } from 'react';
 import Container from '../components/Container';
 import Chon from '../components/Chon';
 import H1 from '../components/H1';
-import kc from '../assets/images/kinder-clochette.png';
-import jojo from '../assets/images/jojo.png';
-import cc from '../assets/images/caramel-citrouille.png';
-import gp from '../assets/images/gus-pippo.png';
 
-const Chons = () => {
+const Chons = ({ params }: any) => {
 
-    const chons = [{
-        title: 'Kinder & Clochette',
-        image: kc,
-    }, {
-        title: 'Jojo',
-        image: jojo,
-    }, {
-        title: 'Caramel & Citrouille',
-        image: cc,
-    }, {
-        title: 'Gus & Pippo',
-        image: gp
-    }]
+    const [chons, setChons] = useState(Array || null)
+
+    useEffect(() => {
+        fetch('/api/get-pets').then((response) => response.json()).then(data => {
+            console.log(data)
+            setChons(data)}).catch((error) => console.log(error))
+    }, [])
 
     return (
         <main>
@@ -29,8 +21,8 @@ const Chons = () => {
                 <section>
                     <H1 text="Les chons à adopter" customClass='text-center' />
                     <ul className='chons-list'>
-                        {chons.map((chon, index) => {
-                            return <Chon key={index} title={chon.title} image={chon.image} />
+                        {chons.map((chon: any) => {
+                            return <Chon key={chon.id} title={chon.name} image={chon.image} id={chon.id} />
                         })}
                     </ul>
                 </section>
