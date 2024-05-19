@@ -57,6 +57,7 @@ const Dashboard = () => {
     }
 
     useEffect(() => {
+        console.log('test')
         if (status === 'authenticated') {
             getPets()
         }
