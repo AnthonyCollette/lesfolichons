@@ -41,7 +41,7 @@ const Dashboard = () => {
 
         await fetch(`/api/add-pet?name=${petName}&id=${petId}&description=${petDesc}&image=${newBlob.url}`).then(() => {
             setPetName('')
-            setPetId('')
+            setPetId(uuidv4())
             setPetDesc('')
             form?.current?.reset()
         }).catch(err => console.log(err))

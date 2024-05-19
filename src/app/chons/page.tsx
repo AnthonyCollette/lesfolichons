@@ -5,7 +5,7 @@ import Container from '../components/Container';
 import Chon from '../components/Chon';
 import H1 from '../components/H1';
 
-const Chons = ({ params }: any) => {
+const Chons = () => {
 
     const [chons, setChons] = useState(Array || null)
 
