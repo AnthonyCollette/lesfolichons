@@ -74,7 +74,7 @@ const Dashboard = () => {
     }
 
     return (
-        <main>
+        <main className='dashboard'>
             <Container>
                 <H1 text="Dashboard" customClass='text-center' />
                 <section>

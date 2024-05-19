@@ -37,7 +37,7 @@ const Page = ({ params }: { params: { chonsId: number } }) => {
                             <p>{data[0].description}</p>
                         </div>
                         <div className='right-column'>
-                            <Image alt={`Photo de ${data[0].name}`} src={data[0].image} sizes='100vw' style={{ width: '100%', height: 'auto' }} />
+                            <Image alt={`Photo de ${data[0].name}`} src={data[0].image} width={400} height={400} sizes='100vw' style={{ width: '100%', height: 'auto' }} />
                         </div>
                     </div>
                 </>}
