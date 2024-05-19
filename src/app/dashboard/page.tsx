@@ -18,6 +18,8 @@ const Dashboard = () => {
     const [petId, setPetId] = useState(uuidv4())
     const [petDesc, setPetDesc] = useState(String)
     const [blob, setBlob] = useState<PutBlobResult | null>(null)
+    const [pets, setPets] = useState(Array || null)
+    const [loading, setLoading] = useState(true)
     const router = useRouter()
 
     const inputFileRef = useRef<HTMLInputElement>(null)
@@ -45,6 +47,21 @@ const Dashboard = () => {
         }).catch(err => console.log(err))
     }
 
+    const getPets = async () => {
+        fetch('/api/get-pets').then(response => response.json()).then(data => setPets(data)).catch(err => console.log(err)).finally(() => setLoading(false))
+    }
+
+    const removePet = async (id: string, url: string) => {
+        fetch(`/api/remove-pet?id=${id}`).catch(err => console.log(err))
+        fetch(`/api/delete-img?url=${url}`).catch(error => console.log(error))
+    }
+
+    useEffect(() => {
+        if (status === 'authenticated') {
+            getPets()
+        }
+    }, [status])
+
     if (status === 'loading') {
         return <Loading />
     }
@@ -57,21 +74,32 @@ const Dashboard = () => {
         <main>
             <Container>
                 <H1 text="Dashboard" customClass='text-center' />
-                <form onSubmit={(e) => createPet(e)} ref={form}>
-                    <div className='form-group'>
-                        <label htmlFor='name'>Nom</label>
-                        <input type="text" name='name' onChange={(e) => setPetName(e.target.value)} />
-                    </div>
-                    <div className='form-group'>
-                        <label htmlFor='description'>Description</label>
-                        <textarea onChange={(e) => setPetDesc(e.target.value)} name='description' />
-                    </div>
-                    <div className='form-group'>
-                        <label htmlFor='image'>Photo</label>
-                        <input type='file' ref={inputFileRef} name='image' />
-                    </div>
-                    <button type="submit" className='btn btn--primary'>Sauvegarder <span></span></button>
-                </form>
+                <section>
+                    <h2>Ajouter un chon à l'adoption</h2>
+                    <form onSubmit={(e) => createPet(e)} ref={form}>
+                        <div className='form-group'>
+                            <label htmlFor='name'>Nom</label>
+                            <input type="text" name='name' onChange={(e) => setPetName(e.target.value)} />
+                        </div>
+                        <div className='form-group'>
+                            <label htmlFor='description'>Description</label>
+                            <textarea onChange={(e) => setPetDesc(e.target.value)} name='description' />
+                        </div>
+                        <div className='form-group'>
+                            <label htmlFor='image'>Photo</label>
+                            <input type='file' ref={inputFileRef} name='image' />
+                        </div>
+                        <button type="submit" className='btn btn--primary'>Sauvegarder <span></span></button>
+                    </form>
+                </section>
+                <section>
+                    <h2>Retirer un chon de l'adoption</h2>
+
+                    {!loading && pets.map((pet: any) => {
+                        return <button key={pet.id} onClick={() => removePet(pet.id, pet.image)}>{pet.name}</button>
+                    })}
+                </section>
+
             </Container>
         </main>
     );

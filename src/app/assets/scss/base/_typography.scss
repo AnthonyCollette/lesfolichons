@@ -3,6 +3,14 @@ h1 {
     margin-bottom: 50px;
 }
 
+h2 {
+    font-size: $font-xl;
+    font-weight: 600;
+    text-transform: uppercase;
+    text-align: center;
+    margin-bottom: 30px;
+}
+
 p, li {
     line-height: 1.3;
 }
